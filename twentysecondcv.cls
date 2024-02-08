@@ -7,6 +7,7 @@
 %----------------------------------------------------------------------------------------
 
 \RequirePackage[sfdefault]{ClearSans}
+\RequirePackage[tabular, oldstyle]{montserrat}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
@@ -18,6 +19,9 @@
 \RequirePackage{pgffor}
 \RequirePackage{marvosym}
 \RequirePackage{parskip}
+\RequirePackage{fontawesome5}
+\RequirePackage{xparse}
+
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -28,30 +32,39 @@
 
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{gray}{HTML}{4D4D4D}
-\definecolor{sidecolor}{HTML}{E7E7E7}
+\definecolor{darkgray}{HTML}{464A4E}
 \definecolor{mainblue}{HTML}{0E5484}
 \definecolor{maingray}{HTML}{B9B9B9}
+
+\colorlet{sidecolor}{black!80}
+\colorlet{sideicon}{darkgray}
+\colorlet{sidetext}{white}
+\colorlet{main1}{darkgray} % Alternating colors for consecutive sections
+\colorlet{main2}{maingray}
 
 %----------------------------------------------------------------------------------------
 %	 MISC CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\bfseries}{\color{gray}} % Make \textbf produce coloured text instead
+%\renewcommand{\bfseries}{\color{gray}} % Make \textbf produce coloured text instead
 
 \pagestyle{empty} % Disable headers and footers
 
 \setlength{\parindent}{0pt} % Disable paragraph indentation
+
+\newcommand*{\cvnamefont}{\fontfamily{Montserrat-TOsF}\fontseries{extrabold}\selectfont}
+
 
 %----------------------------------------------------------------------------------------
 %	 SIDEBAR DEFINITIONS
 %----------------------------------------------------------------------------------------
 
 \setlength{\TPHorizModule}{1cm} % Left margin
-\setlength{\TPVertModule}{1cm} % Top margin
+\setlength{\TPVertModule}{7cm} % Top margin
 
 \newlength\imagewidth
 \newlength\imagescale
-\pgfmathsetlength{\imagewidth}{5cm}
+\pgfmathsetlength{\imagewidth}{4.5cm}
 \pgfmathsetlength{\imagescale}{\imagewidth/600}
 
 \newlength{\TotalSectionLength} % Define a new length to hold the remaining line width after the section title is printed
@@ -62,7 +75,7 @@
 	\addtolength\TotalSectionLength{-\SectionTitleLength}% Subtract the section title width from the total width
 	\addtolength\TotalSectionLength{-2.22221pt}% Modifier to remove overfull box warning
 	\vspace{8pt}% Whitespace before the section title
-	{\color{black!80} \huge #1 \rule[0.15\baselineskip]{\TotalSectionLength}{1pt}}% Print the title and auto-width rule
+	{\color{sidetext} \huge #1 \rule[0.15\baselineskip]{\TotalSectionLength}{1pt}}% Print the title and auto-width rule
 }
 
 % Define custom commands for CV info
@@ -73,11 +86,21 @@
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
 \newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
-\newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
+%\newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
+\NewDocumentCommand{\cvname}{>{\SplitArgument{1}{ }}m}{\renewcommand{\cvname}{\cvnameaux#1}}
+\NewDocumentCommand{\cvnameaux}{mm}{%
+		\cvnamefont \Huge\color{sidetext} \scshape
+		\begin{tabular}{l}
+			\fontseries{semibold}\selectfont#1 \\*[-1.0ex]%
+			\fontseries{bold}\selectfont#2%
+		\end{tabular}
+}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
+\newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
+\newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 
 % Command for printing the contact information icons
-\newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
+\newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=sideicon,sideicon,text=sidetext] (char) {#1};}}
 
 % Command for printing skill progress bars
 \newcommand\skills[1]{ 
@@ -85,7 +108,7 @@
 		\begin{tikzpicture}
 			\foreach [count=\i] \x/\y in {#1}{
 				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
+				\draw[fill=sidecolor,sideicon](0,\i) rectangle (\y,\i+0.4);
 				\node [above right] at (0,\i+0.4) {\x};
 			}
 		\end{tikzpicture}
@@ -103,19 +126,35 @@
 	}
 }
 
+\newcommand{\languages}[1]{
+	\renewcommand{\languages}{
+		\resizebox{0.75\textwidth}{!}{
+		\begin{tikzpicture}
+			\foreach [count=\i] \x/\y in {#1}{
+				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
+				\draw[fill=sidecolor,sideicon](0,\i) rectangle (\y,\i+0.4);
+				\node [above right] at (0,\i+0.4) {\x};
+			}
+		\end{tikzpicture}
+		}
+	}
+}
+
 %----------------------------------------------------------------------------------------
 %	 SIDEBAR LAYOUT
 %----------------------------------------------------------------------------------------
 
 \newcommand{\makeprofile}{
+	\linespread{1.6}
+	
 	\begin{tikzpicture}[remember picture,overlay]
    		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
 	\end{tikzpicture}
 
 	%------------------------------------------------
 
-	\begin{textblock}{6}(0.5, 0.2)
-			
+	\begin{textblock}{6}(1.25, 0.2)
+		\color{sidetext}
 		%------------------------------------------------
 		
 		\ifthenelse{\equal{\profilepic}{}}{}{
@@ -129,21 +168,23 @@
 
 		%------------------------------------------------
 
-		{\Huge\color{mainblue}\cvname}
+		{\cvname}
 
 		%------------------------------------------------
 
-		{\Large\color{black!80}\cvjobtitle}
+		{\Large\color{sidetext}\cvjobtitle}
 
 		%------------------------------------------------
 
-		\renewcommand{\arraystretch}{1.6}
+		\renewcommand{\arraystretch}{1.4}
 		\begin{tabular}{p{0.5cm} @{\hskip 0.5cm}p{5cm}}
-			\ifthenelse{\equal{\cvdate}{}}{}{\textsc{\Large\icon{\Info}} & \cvdate\\}
-			\ifthenelse{\equal{\cvaddress}{}}{}{\textsc{\Large\icon{\Letter}} & \cvaddress\\}
-			\ifthenelse{\equal{\cvnumberphone}{}}{}{\textsc{\Large\icon{\Telefon}} & \cvnumberphone\\}
+			\ifthenelse{\equal{\cvdate}{}}{}{\textsc{\large\icon{\faCalendar*[regular]}} & \cvdate\\}
+			\ifthenelse{\equal{\cvaddress}{}}{}{\textsc{\large\icon{\faMapMarker*}} & \cvaddress\\}
+			\ifthenelse{\equal{\cvnumberphone}{}}{}{\textsc{\large\icon{\faPhone*}} & \cvnumberphone\\}
 			\ifthenelse{\equal{\cvsite}{}}{}{\textsc{\Large\icon{\Mundus}} & \cvsite\\}
-			\ifthenelse{\equal{\cvmail}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\cvmail}{\cvmail}}
+			\ifthenelse{\equal{\cvmail}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\cvmail}{\cvmail}\\}
+			\ifthenelse{\equal{\cvlinkedin}{}}{}{\textsc{\large\icon{\faLinkedinIn}}& \href{https://www.linkedin.com/in/\cvlinkedin}{\cvlinkedin}\\}
+			\ifthenelse{\equal{\cvgithub}{}}{}{\textsc{\large\icon{\faGithub}}&\href{https://github.com/\cvgithub}{github.com/\cvgithub}\\}
 		\end{tabular}
 
 		%------------------------------------------------
@@ -156,13 +197,9 @@
 		}
 
 		%------------------------------------------------
-
-		\profilesection{Skills}
-
-		\skills
-		\skillstext		
-			
-		%------------------------------------------------
+		
+		\profilesection{Languages}
+		\languages
 			
 	\end{textblock}
 }
@@ -181,17 +218,17 @@
 	{%
 		\round{#1}{
 			\ifcase\value{colorCounter}%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
- 			maingray\or%
-			mainblue\else%
-			maingray\fi%
+			main1\or%
+			main2\or%
+			main1\or%
+			main2\or%
+			main1\or%
+			main2\or%
+			main1\or%
+			main2\or%
+ 			main1\or%
+			main2\else%
+			main1\fi%
 		}%
 	}%
 	\stepcounter{colorCounter}%

@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Twenty Seconds Resume/CV
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{twentysecondcv} % a4paper for A4
+\usepackage{eurosym, hyperref}
+\usepackage{montserrat}
+\linespread{1.25}
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+\profilepic{portrait_graybackground_bigger.png} % Profile picture
+\cvname{Manuel Martins} % Your name
+\cvjobtitle{PhD Candidate} % Job title/career
+\cvdate{22 December 1993} % Date of birth
+\cvaddress{Porto, Portugal} % Short address/location, use \newline if more than 1 line is required
+\cvnumberphone{+351 91 947 3307} % Phone number
+\cvsite{}
+\cvgithub{manueljrcsm} % Personal website
+\cvmail{manueljrcsm@gmail.com} % Email address
+\cvlinkedin{manueljrcsm}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	 ABOUT ME
+%----------------------------------------------------------------------------------------
+\aboutme{ Abstract thinker \newline Fast learner 
+} 
+% To have no About Me section, just remove all the text and leave \aboutme{}
+
+%----------------------------------------------------------------------------------------
+%	 SKILLS
+%----------------------------------------------------------------------------------------
+
+% Skill bar section, each skill must have a value between 0 an 6 (float)
+\skills{{git/3},
+		{Python/5},{Teamplayer/5},{Abstract Mathematics/6}}
+		
+%----------------------------------------------------------------------------------------
+\languages{{French/3}, {Spanish/4}, {German/4}, {English/6},{Portuguese/6}}
+
+%----------------------------------------------------------------------------------------
+
+\makeprofile % Print the sidebar
+
+%----------------------------------------------------------------------------------------
+%	 INTERESTS
+%----------------------------------------------------------------------------------------
+
+\section{Professional Profile} 
+
+%----------------------------------------------------------------------------------------
+%	 EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\begin{twenty} % Environment for a list with descriptions	
+	\twentyitem{2017-}{Doctorate (Ph.D.)}{TU Dresden}{Mathematics}
+	\twentyitem{2014-2016}{Master of Science}{Universidade do Porto}{Mathematics}
+	\twentyitem{2011-2014}{Bachelor of Science}{Universidade do Porto}{Mathematics}	
+\end{twenty}
+
+%----------------------------------------------------------------------------------------
+%	 PUBLICATIONS
+%----------------------------------------------------------------------------------------
+
+\section{Publications}
+
+\begin{twentyshort} % Environment for a short list with no descriptions
+	\twentyitemshort{2015 PhD}{Multiplicative structures and involutions on algebraic $K$-theory}	
+	\twentyitemshort{2011 Diplom}{Examples of Involutions on Algebraic
+	$K$-Theory \phantom{ttttttttttttttttttttttt} of Bimonoidal Categories}	
+\end{twentyshort}
+
+%----------------------------------------------------------------------------------------
+%	 EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\begin{twenty} % Environment for a list with descriptions
+	\twentyitem{2018-2019}{Tech Lead, BI / Data Science}{AppLike GmbH, Hamburg}
+	{ 
+    \begin{itemize}
+    \item content
+ 
+
+    \item advising a master thesis in AppLike to synthetically generate fraudulent
+    behaviour, so we can find new security holes - will finish in July 
+    \end{itemize}
+    }
+	\twentyitem{2016-2017}{Business Intelligence (BI) Analyst}{AppLike GmbH, Hamburg}
+   	{
+    \begin{itemize}
+    \item center between tech and business: tracking and reporting 
+    \item communicating with external partners for integrations - e.g. Appsflyer, Singular, King, Playrix, etc.
+    \item occasionally explaining new tech features to business
+    \item push a business request to the backend informally when efficient and needed
+    \end{itemize}
+    }
+	\twentyitem{2007-2015}{Various Tutoring jobs}{University of Hamburg}
+	{
+    \begin{itemize}
+    \item instructed classes in Linear Algebra, Set Theory, Mathematics for Physicist
+    \end{itemize}
+    }
+\end{twenty}
+
+\section{Skills}
+
+	\skills
+	\skillstext		
+
+
+%----------------------------------------------------------------------------------------
+%	 OTHER INFORMATION
+%----------------------------------------------------------------------------------------
+
+\section{Other information}
+As a mathematician and a general tech enthusiast 
+
+\end{document} 
