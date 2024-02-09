@@ -3,10 +3,10 @@
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[a4paper]{twentysecondcv} % a4paper for A4
+\documentclass[a4paper,11pt]{twentysecondcv} % a4paper for A4
 \usepackage{eurosym, hyperref}
 \usepackage{montserrat}
-\linespread{1.25}
+%\linespread{1.25}
 %----------------------------------------------------------------------------------------
 %	 PERSONAL INFORMATION
 %----------------------------------------------------------------------------------------
@@ -29,7 +29,8 @@
 %----------------------------------------------------------------------------------------
 %	 ABOUT ME
 %----------------------------------------------------------------------------------------
-\aboutme{ Abstract thinker \newline Fast learner 
+\aboutme{ Abstract thinker \newline Quick learner  \newline
+	Effective communicator \newline Team worker \newline Cheerful and international \newline Mag andere neugierige Leute
 } 
 % To have no About Me section, just remove all the text and leave \aboutme{}
 
@@ -38,8 +39,8 @@
 %----------------------------------------------------------------------------------------
 
 % Skill bar section, each skill must have a value between 0 an 6 (float)
-\skills{{git/3},
-		{Python/5},{Teamplayer/5},{Abstract Mathematics/6}}
+\skills{{C++/2},{Java/2},{Matlab/3},
+		{Python/5},{Abstract Mathematics/6}}
 		
 %----------------------------------------------------------------------------------------
 \languages{{French/3}, {Spanish/4}, {German/4}, {English/6},{Portuguese/6}}
@@ -52,8 +53,23 @@
 %	 INTERESTS
 %----------------------------------------------------------------------------------------
 
-\section{Professional Profile} 
-
+\color{black!80} \cvnamefont \fontseries{medium}\selectfont
+\linespread{1}
+\vspace{-5pt}
+\section{About me} 
+	\begin{onehalfspace}
+		I am mathematician transitioning from academia to industry.\newline
+		I have done research, programming, tutoring, have lived abroad 7+ years (Germany, Netherlands), learned other cultures and ways of thinking, now it is time to try something new close to home.
+		
+		%Machine learning has been on my radar for the last decade or so and
+		%%Data science has always been at arms length
+		%I look forward to put to the test, the abstract thinking skills I honed over the last 13 years, as well as the programming experience I picked up on the side.
+		
+		I love being challenged and sharing what I learn.
+		I can be competitive but I take pride in helping others thrive. Empathy, curiosity and wit are some of the traits I value the most.
+		
+		\textbf{Interests:} Machine-learning, recursive programming, data analyitics.
+	\end{onehalfspace}
 %----------------------------------------------------------------------------------------
 %	 EDUCATION
 %----------------------------------------------------------------------------------------
@@ -61,22 +77,23 @@
 \section{Education}
 
 \begin{twenty} % Environment for a list with descriptions	
-	\twentyitem{2017-}{Doctorate (Ph.D.)}{TU Dresden}{Mathematics}
-	\twentyitem{2014-2016}{Master of Science}{Universidade do Porto}{Mathematics}
-	\twentyitem{2011-2014}{Bachelor of Science}{Universidade do Porto}{Mathematics}	
+	\twentyitem{Technische Universität Dresden,}{Quantum groups acting transitively on singular curves. 1 publication. 5 invited talks. Supplementary coursework in applied maths: Risk Theory and Modelling, Scientific Computing in C++, Object Oriented Programming in Java}{Ph.D. Mathematics}{2017-\phantom{2024}}
+	\twentyitem{Universidade do Porto,}{Dissertation "Hopf Algebras and Ore Extensions". Grade 18/20.\\
+	Erasmus, VU Amsterdam, Netherlands, Jan - Jul 2015}{M.Sc. Mathematics}{2014-2016}
+	\twentyitem{Universidade do Porto,}{Awarded 6 prizes, incl.~highest classfication in the class of 2014. Grade 19/20.}{B.Sc. Mathematics}{2011-2014}
 \end{twenty}
 
 %----------------------------------------------------------------------------------------
 %	 PUBLICATIONS
 %----------------------------------------------------------------------------------------
 
-\section{Publications}
-
-\begin{twentyshort} % Environment for a short list with no descriptions
-	\twentyitemshort{2015 PhD}{Multiplicative structures and involutions on algebraic $K$-theory}	
-	\twentyitemshort{2011 Diplom}{Examples of Involutions on Algebraic
-	$K$-Theory \phantom{ttttttttttttttttttttttt} of Bimonoidal Categories}	
-\end{twentyshort}
+%\section{Publications}
+%
+%\begin{twentyshort} % Environment for a short list with no descriptions
+%	\twentyitemshort{2015 PhD}{Multiplicative structures and involutions on algebraic $K$-theory}	
+%	\twentyitemshort{2011 Diplom}{Examples of Involutions on Algebraic
+%	$K$-Theory \phantom{ttttttttttttttttttttttt} of Bimonoidal Categories}	
+%\end{twentyshort}
 
 %----------------------------------------------------------------------------------------
 %	 EXPERIENCE
@@ -85,44 +102,30 @@
 \section{Experience}
 
 \begin{twenty} % Environment for a list with descriptions
-	\twentyitem{2018-2019}{Tech Lead, BI / Data Science}{AppLike GmbH, Hamburg}
-	{ 
-    \begin{itemize}
-    \item content
- 
-
-    \item advising a master thesis in AppLike to synthetically generate fraudulent
-    behaviour, so we can find new security holes - will finish in July 
-    \end{itemize}
-    }
-	\twentyitem{2016-2017}{Business Intelligence (BI) Analyst}{AppLike GmbH, Hamburg}
-   	{
-    \begin{itemize}
-    \item center between tech and business: tracking and reporting 
-    \item communicating with external partners for integrations - e.g. Appsflyer, Singular, King, Playrix, etc.
-    \item occasionally explaining new tech features to business
-    \item push a business request to the backend informally when efficient and needed
-    \end{itemize}
-    }
-	\twentyitem{2007-2015}{Various Tutoring jobs}{University of Hamburg}
-	{
-    \begin{itemize}
-    \item instructed classes in Linear Algebra, Set Theory, Mathematics for Physicist
-    \end{itemize}
-    }
+	\twentyitem{Research Assistant}{Research, seminar participation, teaching assistant in Differential Geometry. Formally employed by the university before being awarded a full PhD scholarship.}{TU Dresden}{2017}
+	\twentyitem{Research Scholar}{Awarded introduction-to-research grants \emph{Novos Talentos em Matemática} for two consecutive year. 1 publication. 2 summer schools. 2 yearly reports and presentations. 1 three-month research grant in Algebraic Geometry}{Fundação Calouste Gulbenkian, CMUP}{2012-2014,\\ 2016}
+	\twentyitem{Tutoring, Monitor}{Several highschool and university students in preparation for exams or thesis revision. Monitor during summer schools with highschool students in Sep 2011 and Sep 2013.}{Private, U. Porto}{2012-2023}
 \end{twenty}
 
 \section{Skills}
-
-	\skills
-	\skillstext		
-
+\vspace{-5pt}
+\begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}}p{0.47\textwidth} p{0.54\textwidth}}
+	\skills 
+	\skillstext	
+	&
+	\vspace{10pt}
+	During my PhD I wrote an algebraic symbolic calculator in Python to automate computations in noncommutative algebras.\newline
+	MS Office and collaboration software.
+	Experienced Git and Latex user.
+	Currently learning SQL and machine-learning.
+\end{tabular*}
+		
 
 %----------------------------------------------------------------------------------------
 %	 OTHER INFORMATION
 %----------------------------------------------------------------------------------------
 
-\section{Other information}
-As a mathematician and a general tech enthusiast 
+\section{Additional Info}
+Besides mathematics, I enjoy history, world building, video and board games, heavy music, bonus points when these things are combined. And nothing like a good cup  of coffee.
 
 \end{document} 

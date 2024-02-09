@@ -21,6 +21,8 @@
 \RequirePackage{parskip}
 \RequirePackage{fontawesome5}
 \RequirePackage{xparse}
+\RequirePackage{setspace}
+\RequirePackage{array}
 
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -60,22 +62,24 @@
 %----------------------------------------------------------------------------------------
 
 \setlength{\TPHorizModule}{1cm} % Left margin
-\setlength{\TPVertModule}{7cm} % Top margin
+\setlength{\TPVertModule}{10cm} % Top margin
 
 \newlength\imagewidth
 \newlength\imagescale
-\pgfmathsetlength{\imagewidth}{4.5cm}
+\pgfmathsetlength{\imagewidth}{5.0cm}
 \pgfmathsetlength{\imagescale}{\imagewidth/600}
 
 \newlength{\TotalSectionLength} % Define a new length to hold the remaining line width after the section title is printed
 \newlength{\SectionTitleLength} % Define a new length to hold the width of the section title
 \newcommand{\profilesection}[1]{%
-	\setlength\TotalSectionLength{\linewidth}% Set the total line width
+	\setlength\TotalSectionLength{\textwidth}% Set the total line width
 	\settowidth{\SectionTitleLength}{\huge #1 }% Calculate the width of the section title
 	\addtolength\TotalSectionLength{-\SectionTitleLength}% Subtract the section title width from the total width
-	\addtolength\TotalSectionLength{-2.22221pt}% Modifier to remove overfull box warning
+	\addtolength\TotalSectionLength{-1.0cm}% Modifier to remove overfull box warning
 	\vspace{8pt}% Whitespace before the section title
-	{\color{sidetext} \huge #1 \rule[0.15\baselineskip]{\TotalSectionLength}{1pt}}% Print the title and auto-width rule
+	\begin{flushleft}
+		{\color{sidetext} \huge #1 \rule[0.15\baselineskip]{\TotalSectionLength}{1pt}}% Print the title and auto-width rule
+	\end{flushleft}
 }
 
 % Define custom commands for CV info
@@ -105,13 +109,15 @@
 % Command for printing skill progress bars
 \newcommand\skills[1]{ 
 	\renewcommand{\skills}{
-		\begin{tikzpicture}
+		\resizebox{0.45\textwidth}{!}{
+		\begin{tikzpicture}[baseline=(current bounding box.north)]
 			\foreach [count=\i] \x/\y in {#1}{
 				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
 				\draw[fill=sidecolor,sideicon](0,\i) rectangle (\y,\i+0.4);
 				\node [above right] at (0,\i+0.4) {\x};
 			}
 		\end{tikzpicture}
+	}
 	}
 }
 
@@ -145,25 +151,26 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\makeprofile}{
-	\linespread{1.6}
-	
+	\begin{onehalfspace}
+		
 	\begin{tikzpicture}[remember picture,overlay]
-   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
+   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,1.5cm){};
 	\end{tikzpicture}
 
 	%------------------------------------------------
 
 	\begin{textblock}{6}(1.25, 0.2)
 		\color{sidetext}
+	
 		%------------------------------------------------
-		
+		% Picture, shape, file is designated in the main file
 		\ifthenelse{\equal{\profilepic}{}}{}{
-			\begin{center}
+%			\begin{center}
 				\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
 					\clip (600/2, 567/2) circle (567/2);
 					\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{\profilepic}};
 				\end{tikzpicture}
-			\end{center}
+%			\end{center}
 		}
 
 		%------------------------------------------------
@@ -175,12 +182,26 @@
 		{\Large\color{sidetext}\cvjobtitle}
 
 		%------------------------------------------------
-
+		
+		% Date of Birth and Location
 		\renewcommand{\arraystretch}{1.4}
 		\begin{tabular}{p{0.5cm} @{\hskip 0.5cm}p{5cm}}
 			\ifthenelse{\equal{\cvdate}{}}{}{\textsc{\large\icon{\faCalendar*[regular]}} & \cvdate\\}
 			\ifthenelse{\equal{\cvaddress}{}}{}{\textsc{\large\icon{\faMapMarker*}} & \cvaddress\\}
-			\ifthenelse{\equal{\cvnumberphone}{}}{}{\textsc{\large\icon{\faPhone*}} & \cvnumberphone\\}
+		\end{tabular}
+	
+		%------------------------------------------------
+		
+		\ifthenelse{\equal{\aboutme}{}}{}{
+			\profilesection{Profile}
+			\begin{flushleft}
+				\aboutme
+			\end{flushleft}
+		}
+		\profilesection{Reach me}
+		% Contact phone number, website, email, linkedin and github
+		\begin{tabular}{p{0.5cm} @{\hskip 0.5cm}p{5cm}}
+			\ifthenelse{\equal{\cvnumberphone}{}}{}{\textsc{\large\icon{\faPhone*}} & \href{tel:\cvnumberphone}{\cvnumberphone}\\}
 			\ifthenelse{\equal{\cvsite}{}}{}{\textsc{\Large\icon{\Mundus}} & \cvsite\\}
 			\ifthenelse{\equal{\cvmail}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\cvmail}{\cvmail}\\}
 			\ifthenelse{\equal{\cvlinkedin}{}}{}{\textsc{\large\icon{\faLinkedinIn}}& \href{https://www.linkedin.com/in/\cvlinkedin}{\cvlinkedin}\\}
@@ -189,28 +210,27 @@
 
 		%------------------------------------------------
 		
-		\ifthenelse{\equal{\aboutme}{}}{}{
-			\profilesection{About me}
-			\begin{flushleft}
-				\aboutme
-			\end{flushleft}
-		}
-
-		%------------------------------------------------
-		
 		\profilesection{Languages}
 		\languages
 			
 	\end{textblock}
+	\end{onehalfspace}
 }
-
 %----------------------------------------------------------------------------------------
 %	 COLOURED SECTION TITLE BOX
 %----------------------------------------------------------------------------------------
 
 % Command to create the rounded boxes around the first three letters of section titles
 \newcommand*\round[2]{%
-	\tikz[baseline=(char.base)]\node[anchor=north west, draw,rectangle, rounded corners, inner sep=1.6pt, minimum size=5.5mm, text height=3.6mm, fill=#2,#2,text=white](char){#1};%
+%	\tikz[baseline=(char.base)]\node[anchor=north west, draw,rectangle, rounded corners, inner sep=1.6pt, minimum size=5.5mm, text height=3.6mm, fill=#2,#2,text=white](char){#1};%
+	\setlength\TotalSectionLength{\textwidth}% Set the total line width
+	\settowidth{\SectionTitleLength}{\huge #1 }% Calculate the width of the section title
+	\addtolength\TotalSectionLength{-\SectionTitleLength}% Subtract the section title width from the total width
+	\addtolength\TotalSectionLength{-0.2cm}% Modifier to remove overfull box warning
+	\vspace{3pt}% Whitespace before the section title
+	\begin{flushleft}
+		{\color{#2} \huge \fontseries{bold}\selectfont #1 \rule[0.25\baselineskip]{\TotalSectionLength}{3pt}}% Print the title and auto-width rule
+	\end{flushleft}
 }
 
 \newcounter{colorCounter}
@@ -256,18 +276,17 @@
 
 % New environment for the long list
 \newenvironment{twenty}{%
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
 }{%
 	\end{tabular*}
 }
 
 \newcommand{\twentyitem}[4]{%
-	#1&\parbox[t]{0.83\textwidth}{%
-		\textbf{#2}%
-		\hfill%
-		{\footnotesize#3}\\%
-		#4\vspace{\parsep}%
-	}\\
+	\parbox[t]{0.8\textwidth}{%
+		\textbf{#1} \: %
+		{\footnotesize#3} \hfill \\%
+		{\footnotesize #2}\vspace{\parsep}%
+	}& \begin{tabular}[t]{r} #4 \end{tabular}\\
 }
 
 %----------------------------------------------------------------------------------------
@@ -284,8 +303,8 @@
 }
 
 \newcommand{\twentyitemshort}[2]{%
-	#1&\parbox[t]{0.83\textwidth}{%
-		\textbf{#2}%
+	\parbox[t]{0.83\textwidth}{%
+		\textbf{#1}&#2%
 	}\\
 }
 
@@ -293,6 +312,6 @@
 %	 MARGINS AND LINKS
 %----------------------------------------------------------------------------------------
 
-\RequirePackage[left=7.6cm,top=0.1cm,right=1cm,bottom=0.2cm,nohead,nofoot]{geometry}
+\RequirePackage[left=7.6cm,top=0.1cm,right=2cm,bottom=1cm,nohead,nofoot]{geometry}
 
-\RequirePackage{hyperref}
+\RequirePackage[hidelinks]{hyperref}
