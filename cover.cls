@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cover}[2020/28/06 Cover letter template]
+\ProvidesClass{cover}[2022/02/22 Cover letter template]
 \LoadClass{article}
 
 %%%% BEGIN OPTIONS
@@ -24,6 +24,7 @@
 %%%% Packages added by me:
 \RequirePackage[defaultfam, medium]{montserrat} %----- Montserrat font
 %\RequirePackage{mfirstuc} %--------------------------- capitalize first letters
+\RequirePackage[fontsize=10pt]{fontsize}
 
 %\renewcommand{\familydefault}{\sfdefault} %---------- default font w/o graces
 %\setsansfont{Montserrat}
@@ -50,10 +51,10 @@
 %%%%%%%% CHARACTERISTIC SIZES
 
 \setlength{\parindent}{0em}
-\setlength{\parskip}{0.5em}
+\setlength{\parskip}{0.4em}
 \setlength{\topskip}{0em}
 \setlength{\baselineskip}{0em}
-\linespread{1.5}
+\linespread{1.4}
 %%%%%%%% INFO COMMANDS
 
 \makeatletter
@@ -144,7 +145,7 @@
   \addresslink
   \\
   \rule{0.75\textwidth}{2pt}
-  \\[5em]
+  \\[1em]
   \end{flushright}
 }
 
