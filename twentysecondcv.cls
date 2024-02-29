@@ -35,14 +35,15 @@
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{gray}{HTML}{4D4D4D}
 \definecolor{darkgray}{HTML}{464A4E}
-\definecolor{mainblue}{HTML}{0E5484}
+\definecolor{mainblue}{HTML}{003F88}
 \definecolor{maingray}{HTML}{B9B9B9}
 
-\colorlet{sidecolor}{black!80}
-\colorlet{sideicon}{darkgray}
+\colorlet{sidecolor}{mainblue}
+\colorlet{sideicon}{mainblue}
 \colorlet{sidetext}{white}
-\colorlet{main1}{darkgray} % Alternating colors for consecutive sections
-\colorlet{main2}{maingray}
+\colorlet{main1}{mainblue} % Alternating colors for consecutive sections
+\colorlet{main2}{darkgray}
+\colorlet{barmain}{white}
 
 %----------------------------------------------------------------------------------------
 %	 MISC CONFIGURATIONS
@@ -137,8 +138,8 @@
 		\resizebox{0.75\textwidth}{!}{
 		\begin{tikzpicture}
 			\foreach [count=\i] \x/\y in {#1}{
-				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=sidecolor,sideicon](0,\i) rectangle (\y,\i+0.4);
+				\draw[fill=maingray,sidecolor!50] (0,\i) rectangle (6,\i+0.4);
+				\draw[fill=sidecolor,barmain](0,\i) rectangle (\y,\i+0.4);
 				\node [above right] at (0,\i+0.4) {\x};
 			}
 		\end{tikzpicture}

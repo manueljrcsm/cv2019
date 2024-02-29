@@ -50,8 +50,8 @@
 
 %%%%%%%% CHARACTERISTIC SIZES
 
-\setlength{\parindent}{0em}
-\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.5em}
 \setlength{\topskip}{0em}
 \setlength{\baselineskip}{0em}
 \linespread{1.4}
@@ -149,14 +149,11 @@
   \end{flushright}
 }
 
-\newenvironment{receiver}
+\newcommand{\receiver}
 {
   \begin{flushleft}
     \jobofferlink \hfill \thedate 
     \\%[2em]
-    
-}
-{
   \end{flushleft}
 %  \vspace{1em}
 }
