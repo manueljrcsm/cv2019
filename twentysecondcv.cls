@@ -32,13 +32,15 @@
 %	 COLOURS
 %----------------------------------------------------------------------------------------
 
+% Store here your colors with descriptive names 
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{gray}{HTML}{4D4D4D}
 \definecolor{darkgray}{HTML}{464A4E}
 \definecolor{mainblue}{HTML}{003F88}
 \definecolor{maingray}{HTML}{B9B9B9}
 
-\colorlet{sidecolor}{mainblue}
+% Assign the colors to the name of their underlying element
+\colorlet{sidebar}{mainblue}
 \colorlet{sideicon}{mainblue}
 \colorlet{sidetext}{white}
 \colorlet{main1}{mainblue} % Alternating colors for consecutive sections
@@ -89,7 +91,7 @@
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
-\newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
+\newcommand{\profile}[1]{\renewcommand{\profile}{#1}}
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 %\newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
 \NewDocumentCommand{\cvname}{>{\SplitArgument{1}{ }}m}{\renewcommand{\cvname}{\cvnameaux#1}}
@@ -114,7 +116,7 @@
 		\begin{tikzpicture}[baseline=(current bounding box.north)]
 			\foreach [count=\i] \x/\y in {#1}{
 				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=sidecolor,sideicon](0,\i) rectangle (\y,\i+0.4);
+				\draw[fill=sidebar,sideicon](0,\i) rectangle (\y,\i+0.4);
 				\node [above right] at (0,\i+0.4) {\x};
 			}
 		\end{tikzpicture}
@@ -138,8 +140,8 @@
 		\resizebox{0.75\textwidth}{!}{
 		\begin{tikzpicture}
 			\foreach [count=\i] \x/\y in {#1}{
-				\draw[fill=maingray,sidecolor!50] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=sidecolor,barmain](0,\i) rectangle (\y,\i+0.4);
+				\draw[fill=maingray,sidebar!50] (0,\i) rectangle (6,\i+0.4);
+				\draw[fill=sidebar,barmain](0,\i) rectangle (\y,\i+0.4);
 				\node [above right] at (0,\i+0.4) {\x};
 			}
 		\end{tikzpicture}
@@ -155,7 +157,7 @@
 	\begin{onehalfspace}
 		
 	\begin{tikzpicture}[remember picture,overlay]
-   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,1.5cm){};
+   		\node [rectangle, fill=sidebar, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,1.5cm){};
 	\end{tikzpicture}
 
 	%------------------------------------------------
@@ -193,10 +195,10 @@
 	
 		%------------------------------------------------
 		
-		\ifthenelse{\equal{\aboutme}{}}{}{
+		\ifthenelse{\equal{\profile}{}}{}{
 			\profilesection{Profile}
 			\begin{flushleft}
-				\aboutme
+				\profile
 			\end{flushleft}
 		}
 		\profilesection{Reach me}
