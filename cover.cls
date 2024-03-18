@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cover}[2022/02/22 Cover letter template]
+\ProvidesClass{cover}[2024 Cover Letter template]
 \LoadClass{article}
 
 %%%% BEGIN OPTIONS
@@ -23,11 +23,8 @@
 \RequirePackage{bookmark} %-------------------------- hyperref
 %%%% Packages added by me:
 \RequirePackage[defaultfam, medium]{montserrat} %----- Montserrat font
-%\RequirePackage{mfirstuc} %--------------------------- capitalize first letters
-\RequirePackage[fontsize=10pt]{fontsize}
-
-%\renewcommand{\familydefault}{\sfdefault} %---------- default font w/o graces
-%\setsansfont{Montserrat}
+%\RequirePackage{mfirstuc} %-------------------------- capitalize first letters
+\RequirePackage[fontsize=10pt]{fontsize} %------------ set arbtitrary fontsizes
 
 %%%%%%%% STYLE OF THE PAGE
 
@@ -46,7 +43,7 @@
 %%%% COLOURS
 
 %\definecolor{links}{named}{black!80}
-\colorlet{links}{black!60}
+\colorlet{links}{black!60} % links are gray to stand out
 
 %%%%%%%% CHARACTERISTIC SIZES
 
@@ -149,7 +146,7 @@
   \end{flushright}
 }
 
-\newcommand{\receiver}
+\newcommand{\subjectline}
 {
   \begin{flushleft}
     \jobofferlink \hfill \thedate 
