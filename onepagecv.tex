@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Twenty Seconds Resume/CV
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{twentysecondcv} % a4paper for A4
+\usepackage{eurosym, hyperref}
+\usepackage{montserrat}
+%\linespread{1.25}
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+\profilepic{images/portrait.png} % Profile picture (replace the file)
+\cvname{[Your Name]} % Your name
+\cvjobtitle{[Job Position]} % Job title/career
+\cvdate{[Date of birth]} % Date of birth
+\cvaddress{[Location]} % Short address/location, use \newline if more than 1 line is required
+\cvnumberphone{[phone-number]} % Phone number
+\cvsite{} % Personal website
+\cvgithub{[Github]} % Github username
+\cvmail{[your@email.com]} % Email address
+\cvlinkedin{[Linkedin]} % Linkedin username
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	 ABOUT ME
+%----------------------------------------------------------------------------------------
+\profile{ [Your] \newline [attributes]  \newline [here] \newline [one] \newline [per] \newline [line] } 
+% To have no About Me section, just remove all the text and leave \aboutme{}
+
+%----------------------------------------------------------------------------------------
+%	 SKILLS
+%----------------------------------------------------------------------------------------
+
+% Skill bar section, each skill must have a value between 0 an 6 (float), and ordered from
+% bottom to top -------------------------------------------------------------------------
+\skills{{[Skill 5]/2},{[Skill 4]/3},{[Skill 2]/3},
+		{[Skill 2]/5},{[Skill 1]/6}}
+		
+% Same format as skills: "language" + "/" + "grade btw 0 and 6"
+\languages{{French/3}, {Spanish/4}, {German/4}, {English/6}, {Portuguese/6}}
+
+%----------------------------------------------------------------------------------------
+
+\makeprofile % Print the sidebar
+
+%----------------------------------------------------------------------------------------
+%	 INTERESTS
+%----------------------------------------------------------------------------------------
+
+\color{black!80} \cvnamefont \fontseries{medium}\selectfont
+\linespread{1}
+\vspace{-5pt}
+\section{About me} 
+	\begin{onehalfspace}
+		[Brief description of yourself and what you bring to the job you are applying for.]
+		
+		
+		\textbf{Interests:} [list them here]
+	\end{onehalfspace}
+%----------------------------------------------------------------------------------------
+%	 EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\begin{twenty} % Environment for a list with descriptions	
+	\twentyitem{[Institution],}{[Description]}{[Academic degree]}{2020-2024}
+	\twentyitem{[Institution],}{[Description]}{[Academic degree]}{2016-2020}
+\end{twenty}
+
+%----------------------------------------------------------------------------------------
+%	 PUBLICATIONS
+%----------------------------------------------------------------------------------------
+
+%\section{Publications}
+%
+
+%----------------------------------------------------------------------------------------
+%	 EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\begin{twenty} % Environment for a list with descriptions
+	\twentyitem{[Most recent job]}{[Job description, tasks, results.]}{[Company Name]}{2022-2024}
+	\twentyitem{[Previous job]}{[Job description, tasks, results.]}{[Company Name]}{2018-2022}
+	\twentyitem{[Job before that]}{[Job description, tasks, results.]}{[Company Name]}{2014-2018}
+\end{twenty}
+
+\section{Skills}
+\vspace{-5pt}
+\begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}}p{0.47\textwidth} p{0.54\textwidth}}
+	\skills 
+	\skillstext	
+	&
+	\vspace{10pt}
+	\small
+	[Text complementary to the table goes here.]
+\end{tabular*}
+		
+
+%----------------------------------------------------------------------------------------
+%	 OTHER INFORMATION
+%----------------------------------------------------------------------------------------
+
+\section{Additional Info}
+[Optional.]
+\vspace{-3em}
+\end{document} 
